@@ -5,8 +5,8 @@ window.start = ()=>{
     window.started = true;
     window.count = 1;
     class Bot {
-        constructor(url, token) {
-            this.token = token;
+        constructor(url) { // RECAPTCHA TOKEN PARAMETRESİ KALDIRILDI
+            // this.token = token; // RECAPTCHA TOKEN ATAMASI KALDIRILDI
             this.connect(url)
         }
 
@@ -47,6 +47,9 @@ window.start = ()=>{
         sleep(ms) {
             return new Promise(resolve=>setTimeout(resolve, ms));
         }
+        
+        // cap fonksiyonu (RECAPTCHA token gönderme) tamamen kaldırıldı
+        /*
         cap(_0x12d854) {
             var _0x50689c = this.Buffer(1 + 2 * _0x12d854.length);
             _0x50689c.setUint8(0, 50);
@@ -55,6 +58,8 @@ window.start = ()=>{
             }
             this.send(_0x50689c);
         }
+        */
+
         onOpen() {
             var _0xe6a2x9e = this.Buffer(5);
             _0xe6a2x9e.setUint8(0, 254);
@@ -65,7 +70,7 @@ window.start = ()=>{
             _0xe6a2x9e.setUint8(0, 255);
             _0xe6a2x9e.setUint32(1, 1332175218, true);
             this.send(_0xe6a2x9e);
-            this.cap(this.token);
+            // this.cap(this.token); // RECAPTCHA GÖNDERME KALDIRILDI
 
             this.pingInterval = setInterval(()=>{
                 var msg = this.Buffer(5);
@@ -125,35 +130,13 @@ localStorage.setItem("gameMode", server); // seçimi kaydet
 
     for (let index = 0; index < 4; index++) {
         setTimeout(()=>{
-            //     window.Bots.push(new Bot('wss://' + server))
-
-            grecaptcha.ready(function() {
-                grecaptcha.execute('6LcnrKQUAAAAADohV5Cksikz89WSP-ZPHNA7ViZm', {
-                    'action': 'play_game'
-                }).then(function(_0x1e5238) {
-                    window.Bots.push(new Bot('wss://' + server,_0x1e5238))
-                });
-            });
+            // RECAPTCHA KALDIRILDI: Botlar doğrudan başlatılıyor
+            window.Bots.push(new Bot('wss://' + server))
 
         }
         , 500 * index);
     }
 }
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === `"`) {
-        if (window.started === true)
-            return;
-        window.start();
-    }
-    if (event.key === `b`) {
-        document.querySelector('#main-login-section').style.display = 'none'
-        window.xa();
-    }
-    if (event.key === `Escape`) {
-        document.querySelector('#main-login-section').style.display = ''
-    }
-});
 var Vector2 = function($, x) {
     this.x = $ || 0,
     this.y = x || 0
@@ -1929,3 +1912,4 @@ window.addEventListener("DOMContentLoaded", () => {
     setHideSkins(); // sayfa yüklenince uygula
   }
 });
+
