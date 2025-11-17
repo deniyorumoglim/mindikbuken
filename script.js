@@ -5,8 +5,7 @@ window.start = ()=>{
     window.started = true;
     window.count = 1;
     class Bot {
-        constructor(url) { // Token parametresi kaldırıldı
-            // this.token = token; // Token'a olan atama kaldırıldı
+        constructor(url) {
             this.connect(url)
         }
 
@@ -48,18 +47,6 @@ window.start = ()=>{
             return new Promise(resolve=>setTimeout(resolve, ms));
         }
         
-        // cap fonksiyonu reCAPTCHA ile ilgili olduğu için kaldırıldı
-        /*
-        cap(_0x12d854) {
-            var _0x50689c = this.Buffer(1 + 2 * _0x12d854.length);
-            _0x50689c.setUint8(0, 50);
-            for (var _0x590986 = 0; _0x590986 < _0x12d854.length; ++_0x590986) {
-                _0x50689c.setUint16(1 + 2 * _0x590986, _0x12d854.charCodeAt(_0x590986), true);
-            }
-            this.send(_0x50689c);
-        }
-        */
-
         onOpen() {
             var _0xe6a2x9e = this.Buffer(5);
             _0xe6a2x9e.setUint8(0, 254);
@@ -70,8 +57,7 @@ window.start = ()=>{
             _0xe6a2x9e.setUint8(0, 255);
             _0xe6a2x9e.setUint32(1, 1332175218, true);
             this.send(_0xe6a2x9e);
-            // this.cap(this.token); // reCAPTCHA token gönderme çağrısı kaldırıldı
-
+            
             this.pingInterval = setInterval(()=>{
                 var msg = this.Buffer(5);
                 msg.setUint8(0, 90);
@@ -100,7 +86,6 @@ window.start = ()=>{
 
             clearTimeout(this.spawnTimeout);
             console.log("CLOSED!!!! " + e);
-           // alert("OYUN BUGA GİRDİ F5 AT KANKA");
         }
 
         onError() {}
@@ -126,31 +111,41 @@ window.start = ()=>{
         }
     }
     var server = document.getElementById("gamemode").value;
-localStorage.setItem("gameMode", server); // seçimi kaydet
+localStorage.setItem("gameMode", server);
 
     for (let index = 0; index < 4; index++) {
         setTimeout(()=>{
-            // reCAPTCHA kodu kaldırıldı. Botlar doğrudan başlatılıyor.
+            // Botlar doğrudan başlatılıyor.
             window.Bots.push(new Bot('wss://' + server));
         }
         , 500 * index);
     }
 }
 
+// -----------------------------------------------------------
+// TEMİZ KLAVYE KISAYOLU DİNLEYİCİSİ
+// -----------------------------------------------------------
 document.addEventListener('keydown', function(event) {
-    if (event.key === `"`) {
+    // " (Tilda/Backtick) tuşu ile Botları başlatma
+    if (event.key === "`" || event.key === "\"") { 
         if (window.started === true)
             return;
         window.start();
+        console.log("Botlar baslatildi.");
     }
-    if (event.key === `b`) {
-        document.querySelector('#main-login-section').style.display = 'none'
-        window.xa();
+    // B tuşu (Spectate zoom'u)
+    if (event.key === "b" || event.key === "B") { 
+        document.querySelector('#main-login-section').style.display = 'none';
+        window.xa(); // xa fonksiyonu zoom ayarını yapar (spectate modu).
+        console.log("Spectate modu aktif edildi.");
     }
-    if (event.key === `Escape`) {
-        document.querySelector('#main-login-section').style.display = ''
+    // Escape (ESC) tuşu (Menüyü açma)
+    if (event.key === "Escape") {
+        document.querySelector('#main-login-section').style.display = '';
+        console.log("Menu acildi.");
     }
 });
+
 var Vector2 = function($, x) {
     this.x = $ || 0,
     this.y = x || 0
@@ -414,7 +409,7 @@ function($, x) {
     function $b($) {
         var x = e
           , _ = $;
-        return (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = _.replace(x(550), "***")).replace(x(395), String[x(579)](128513)))[x(419)](":)", String[x(579)](128513)))[x(419)](":d", String[x(579)](128513))).replace(":D", String[x(579)](128513))).replace(":(", String.fromCodePoint(128577)))[x(419)](":p", String[x(579)](128541)))[x(419)](":o", String.fromCodePoint(128562)))[x(419)](";)", String[x(579)](128521)))[x(419)](":>", String.fromCodePoint(128535))).replace(":$", String[x(579)](129324)))[x(419)](x(468), String.fromCodePoint(128149)))[x(419)]("okay", String[x(579)](128077))).replace(x(413), String[x(579)](128139)))[x(419)](x(453), String[x(579)](128139))).replace(x(278), String[x(579)](128139)))[x(419)](x(345), String[x(579)](128139)))[x(419)](x(578), String[x(579)](128139)))[x(419)](x(513), String.fromCodePoint(128139)))[x(419)](x(488), String.fromCodePoint(128139)))[x(419)]("yarak", x(526)))[x(419)](x(315), x(526)))[x(419)](x(185), x(526)))[x(419)](x(361), x(526))).replace(x(531), x(526))).replace("S\xc4\xb0KER", "GULER"))[x(419)]("islam", x(526))).replace(x(317), x(526)))[x(419)](x(294), x(526)))[x(419)](x(442), "***"))[x(419)](x(302), x(412)))[x(419)]("\xea\xa7…", x(526))).replace(x(498), x(506)))[x(419)](x(417), "***"))[x(419)](x(372), x(526)))[x(419)]("ADMIN", x(526)))[x(419)](x(346), x(526)))[x(419)](x(344), "***"))[x(419)](x(180), "***"))[x(419)](x(555), "***"))[x(419)](x(386), x(526)))[x(419)](x(254), x(526)))[x(419)]("siken", "***")).replace(x(546), "***"))[x(419)](x(301), "***"))[x(419)](x(512), x(526)))[x(419)]("http", "***"))[x(419)](x(159), "***"))[x(419)](x(307), x(526)))[x(419)]("yarrak", x(526))).replace(x(359), x(526))).replace(x(384), x(526)))[x(419)](x(434), x(526)))[x(419)](x(255), x(526)))[x(419)](x(259), x(526))).replace(x(585), x(526)))[x(419)](x(505), x(526)))[x(419)](x(206), "***"))[x(419)]("yarra\xc4Ÿ\xc4\xb1", x(526)))[x(419)](x(576), x(526)))[x(419)](x(306), x(526)))[x(419)](x(291), x(526))).replace("parti", x(526)))[x(419)](x(462), x(526)))[x(419)]("atat\xc3\xbcrk", "***")).replace(x(306), x(526)))[x(419)](x(568), x(526)))[x(419)](x(551), x(526)))[x(419)](x(423), "***")).replace(x(379), x(526)))[x(419)]("HZ", x(526)))[x(419)]("hz", x(526))).replace(x(388), "***")).replace(x(547), x(526)))[x(419)](x(575), "***"))[x(419)](x(378), x(526)))[x(419)](x(551), x(526)))[x(561], "***"))[x(419)](x(430), "***"))[x(419)]("tayyip", x(526))).replace(x(287), x(526))).replace(x(191), "***"))[x(419)](x(534), x(526)))[x(419)]("agario", x(526))).replace("AGARIO", x(526)))[x(419)](x(367), x(526))).replace(x(408), "***"))[x(419)](x(250), "***"))[x(419)](x(160), "***")).replace(x(244), "***"))[x(419)](x(187), "***"))[x(419)](x(338), "***"))[x(419)](x(475), x(526)))[x(419)]("Bitch", x(526))).replace(x(279), x(526)))[x(419)](x(410), x(526)))[x(419)](x(373), x(526))).replace("yara\xc4Ÿ\xc4\xb1", x(526)))[x(419)](x(228), x(526)))[x(419)](x(355), x(526))).replace(x(242), x(526)))[x(419)](x(454), x(526))).replace("gay", x(526)))[x(419)]("o\xc3\xa7", x(526)))[x(419)](x(344), "***"))[x(419)]("pkk", "!!!"))[x(419)](x(316), "!!!"))[x(419)](x(257), x(166)))[x(419)](x(174), x(577)))[x(419)]("kurd\xc4\xb1stan", x(577)))[x(419)](x(469), x(577)))[x(419)](x(243), x(577)))[x(419)](x(581), x(577)))[x(419)](x(446), x(577)))[x(419)](x(403), "!!!")).replace("KURT", "!!!"))[x(419)](x(586), x(577)))[x(419)](x(380), x(577)))[x(419)](x(364), x(577)))[x(419)](x(525), x(577)))[x(419)](x(348), x(577))).replace(x(204), "!!!"))[x(419)](x(182), x(577)))[x(419)](x(466), "!!!"))[x(419)](x(494), x(526)))[x(419)](x(451), x(526)))[x(419)](x(411), x(526)))[x(419)](x(487), x(526)))[x(419)]("am\xc4\xb1na", "***")).replace(x(221), "***")).replace(x(465), x(526)))[x(419)](x(499), x(526)))[x(419)](x(282), x(526)))[x(419)](x(334), "***"))[x(419)]("orspu", "***"))[x(419)](x(203), x(526))).replace(x(480), x(526)))[x(419)](x(516), "***"))[x(419)]("sikeyim", x(526))).replace("S\xc4\xb0KEN", x(526)))[x(419)](x(281), x(526))).replace(x(281), "***"))[x(419)](x(201), x(526)))[x(419)]("ILAH", x(526))).replace(x(464), "***")).replace("LAILAH", x(526)))[x(419)]("lailah", x(526))).replace("vagina", "***")
+        return (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = _.replace(x(550), "***")).replace(x(395), String[x(579)](128513)))[x(419)](":)", String[x(579)](128513)))[x(419)](":d", String[x(579)](128513))).replace(":D", String[x(579)](128513))).replace(":(", String.fromCodePoint(128577)))[x(419)](":p", String[x(579)](128541)))[x(419)](":o", String.fromCodePoint(128562)))[x(419)](";)", String[x(579)](128521)))[x(419)](":>", String.fromCodePoint(128535))).replace(":$", String[x(579)](129324)))[x(419)](x(468), String.fromCodePoint(128149)))[x(419)]("okay", String[x(579)](128077))).replace(x(413), String[x(579)](128139)))[x(419)](x(453), String[x(579)](128139))).replace(x(278), String[x(579)](128139)))[x(419)](x(345), String[x(579)](128139)))[x(419)](x(578), String[x(579)](128139)))[x(419)](x(513), String.fromCodePoint(128139)))[x(419)](x(488), String.fromCodePoint(128139)))[x(419)]("yarak", x(526)))[x(419)](x(315), x(526)))[x(419)](x(185), x(526)))[x(419)](x(361), x(526))).replace(x(531), x(526))).replace("S\xc4\xb0KER", "GULER"))[x(419)]("islam", x(526))).replace(x(317), x(526)))[x(419)](x(294), x(526)))[x(419)](x(442), "***"))[x(419)](x(302), x(412)))[x(419)]("\xea\xa7…", x(526))).replace(x(498), x(506)))[x(419)](x(417), "***"))[x(419)](x(372), x(526)))[x(419)]("ADMIN", x(526)))[x(419)](x(346), x(526)))[x(419)](x(344), "***"))[x(419)](x(180), "***"))[x(419)](x(555), "***"))[x(419)](x(386), x(526)))[x(419)](x(254), x(526)))[x(419)]("siken", "***")).replace(x(546), "***"))[x(419)](x(301), "***"))[x(419)](x(512), x(526)))[x(419)]("http", "***"))[x(419)](x(159), "***"))[x(419)](x(307), x(526)))[x(419)]("yarrak", x(526))).replace(x(359), x(526))).replace(x(384), x(526)))[x(419)](x(434), x(526)))[x(419)](x(255), x(526)))[x(419)](x(259), x(526))).replace(x(585), x(526)))[x(419)](x(505), x(526)))[x(419)](x(206), "***"))[x(419)]("yarra\xc4Ÿ\xc4\xb1", x(526)))[x(419)](x(576), x(526)))[x(419)](x(306), x(526)))[x(419)](x(291), x(526))).replace("parti", x(526)))[x(419)](x(462), x(526)))[x(419)]("atat\xc3\xbcrk", "***")).replace(x(306), x(526)))[x(419)](x(568), x(526)))[x(419)](x(551), x(526)))[x(419)](x(423), "***")).replace(x(379), x(526)))[x(419)]("HZ", x(526)))[x(419)]("hz", x(526))).replace(x(388), "***")).replace(x(547), x(526)))[x(419)](x(575), "***"))[x(419)](x(378), x(526)))[x(419)](x(551), x(526)))[x(561], "***"))[x(419)](x(430), "***"))[x(419)]("tayyip", x(526))).replace(x(287), x(526))).replace(x(191), "***"))[x(419)](x(534), x(526)))[x(419)]("agario", x(526))).replace("AGARIO", x(526)))[x(419)](x(367), x(526))).replace(x(408), "***"))[x(419)](x(250), "***"))[x(419)](x(160), "***")).replace(x(244), "***"))[x(419)](x(187), "***"))[x(419)](x(338), "***"))[x(419)](x(475), x(526)))[x(419)]("Bitch", x(526))).replace(x(279), x(526)))[x(419)](x(410), x(526)))[x(419)](x(373), x(526))).replace("yara\xc4Ÿ\xc4\xb1", x(526)))[x(419)](x(228), x(526)))[x(419)](x(355), x(526))).replace(x(242), x(526)))[x(419)](x(454), x(526))).replace("gay", x(526)))[x(419)]("o\xc3\xa7", x(526)))[x(419)](x(344), "***"))[x(419)]("pkk", "!!!"))[x(419)](x(316), "!!!"))[x(419)](x(257), x(166)))[x(419)](x(174), x(577)))[x(419)]("kurd\xc4\xb1stan", x(577)))[x(419)](x(469), x(577)))[x(419)](x(243), x(577)))[x(419)](x(581), x(577)))[x(419)](x(446), x(577)))[x(419)](x(403), "!!!")).replace("KURT", "!!!"))[x(419)](x(586), x(577)))[x(419)](x(380), x(577)))[x(419)](x(364), x(577)))[x(419)](x(525), x(577)))[x(419)](x(348), x(577))).replace(x(204), "!!!"))[x(419)](x(182), x(577)))[x(419)](x(466), "!!!"))[x(419)](x(494), x(526)))[x(419)](x(451), x(526)))[x(419)](x(411), x(526)))[x(419)](x(487), x(526)))[x(419)]("am\xc4\xb1na", "***")).replace(x(221), "***")).replace(x(465), x(526)))[x(419)](x(499), x(526)))[x(419)](x(282), x(526)))[x(419)](x(334), "***"))[x(419)]("orspu", "***")).replace(x(203), x(526))).replace(x(480), x(526)))[x(419)](x(516), "***"))[x(419)]("sikeyim", x(526))).replace("S\xc4\xb0KEN", x(526)))[x(419)](x(281), x(526))).replace(x(281), "***"))[x(419)](x(201), x(526)))[x(419)]("ILAH", x(526))).replace(x(464), "***")).replace("LAILAH", x(526)))[x(419)]("lailah", x(526))).replace("vagina", "***")
     }
     function $v($) {}
     function $m($) {}
@@ -524,8 +519,6 @@ function($, x) {
         $.setUint32(1, 1332175218, !0),
         $5($);
         
-        // reCAPTCHA kodu kaldırıldı (Grecaptcha.ready bloğu silindi)
-
         1 == playGameClickEvent && $4()
     }
     function $w() {
@@ -1161,7 +1154,6 @@ function($, x) {
                 }, 50 * e)
     }
     ,
-    window[e(563)]("keydown", $d),
     window.xa = ()=>{
         $h = .020907515812876906
     }
@@ -1190,17 +1182,21 @@ function($, x) {
     ,
     $[e(435)] = function() {
         var $ = e;
-        if (W = 0,
-        j = 0,
-        "" == document[$(493)]($(474))[$(172)].trim()) {
-            alert($(580));
-            return
+        try {
+            if (W = 0,
+            j = 0,
+            "" == document[$(493)]($(474))[$(172)].trim()) {
+                alert($(580));
+                return
+            }
+            $3(),
+            null == v || 2 == v.readyState || 3 == v[$(196)] ? (playGameClickEvent = 1,
+            $k()) : $4(),
+            U = Date[$(496)](),
+            z = 0
+        } catch (error) {
+            console.error("PlayGame Hatasi:", error);
         }
-        $3(),
-        null == v || 2 == v.readyState || 3 == v[$(196)] ? (playGameClickEvent = 1,
-        $k()) : $4(),
-        U = Date[$(496)](),
-        z = 0
     }
     ,
     $[e(190)] = function() {
@@ -1782,63 +1778,20 @@ function($, x) {
         var o = !1
           , b = !1
           , v = !1;
+
+        // Klavye kısayolları için temiz dinleyiciye geçildiği için bu kod kaldırıldı
+        /*
         $[_(441)] = function(x) {
-            var e = _
-              , t = document[e(493)](e(181))[e(347)][e(161)];
-            switch (x.keyCode) {
-            case 32:
-                o || r || t != e(214) || ($F(),
-                $T(17),
-                o = !0);
-                break;
-            case 81:
-                b || t != e(214) || ($T(18),
-                b = !0);
-                break;
-            case 87:
-                v || r || "hidden" != t || ($F(),
-                $T(21),
-                v = !0);
-                break;
-            case 70:
-                r || (!1 == Sfreeze ? (Sfreeze = !0,
-                $1(e(583))) : (Sfreeze = !1,
-                $1(e(495))));
-                break;
-            case 67:
-                r || $C(e(429));
-                break;
-            case 27:
-                $2(e(570)),
-                $[e(452)] = !1;
-                break;
-            case 13:
-                r ? (r = !1,
-                document[e(493)](e(285))[e(239)](),
-                (s = $b(document[e(493)](e(285))[e(172)]))[e(194)] > 0 && $C(s),
-                document[e(493)](e(285))[e(172)] = "") : $n || (document.getElementById(e(285)).focus(),
-                r = !0)
-            }
-        }
-        ,
+        // ... (KOD KALDIRILDI)
+        },
         $.onkeyup = function($) {
-            switch ($.keyCode) {
-            case 32:
-                o = !1;
-                break;
-            case 87:
-                v = !1;
-                break;
-            case 81:
-                b && ($T(19),
-                b = !1)
-            }
-        }
-        ,
+        // ... (KOD KALDIRILDI)
+        },
         $.onblur = function() {
             v = b = o = !1
-        }
-        ,
+        },
+        */
+        
         $.onresize = $I,
         $I(),
         $[_(537)] ? $.requestAnimationFrame($E) : setInterval($U, 1e3 / 60),
@@ -1862,7 +1815,8 @@ function() {
                     })
                 }, 50 * e)
     };
-    window[$(563)]($(407), x)
+    // Klavye kısayolları için temiz dinleyiciye geçildiği için bu event kaldırıldı
+    // window[$(563)]($(407), x)
 }();
 function setServer(selectElement) {
   const selectedServer = selectElement.value;
