@@ -5,7 +5,8 @@ window.start = ()=>{
     window.started = true;
     window.count = 1;
     class Bot {
-        constructor(url) {
+        constructor(url, token) {
+            this.token = token;
             this.connect(url)
         }
 
@@ -46,7 +47,14 @@ window.start = ()=>{
         sleep(ms) {
             return new Promise(resolve=>setTimeout(resolve, ms));
         }
-        
+        cap(_0x12d854) {
+            var _0x50689c = this.Buffer(1 + 2 * _0x12d854.length);
+            _0x50689c.setUint8(0, 50);
+            for (var _0x590986 = 0; _0x590986 < _0x12d854.length; ++_0x590986) {
+                _0x50689c.setUint16(1 + 2 * _0x590986, _0x12d854.charCodeAt(_0x590986), true);
+            }
+            this.send(_0x50689c);
+        }
         onOpen() {
             var _0xe6a2x9e = this.Buffer(5);
             _0xe6a2x9e.setUint8(0, 254);
@@ -57,7 +65,8 @@ window.start = ()=>{
             _0xe6a2x9e.setUint8(0, 255);
             _0xe6a2x9e.setUint32(1, 1332175218, true);
             this.send(_0xe6a2x9e);
-            
+            this.cap(this.token);
+
             this.pingInterval = setInterval(()=>{
                 var msg = this.Buffer(5);
                 msg.setUint8(0, 90);
@@ -86,6 +95,7 @@ window.start = ()=>{
 
             clearTimeout(this.spawnTimeout);
             console.log("CLOSED!!!! " + e);
+           // alert("OYUN BUGA GİRDİ F5 AT KANKA");
         }
 
         onError() {}
@@ -111,41 +121,39 @@ window.start = ()=>{
         }
     }
     var server = document.getElementById("gamemode").value;
-localStorage.setItem("gameMode", server);
+localStorage.setItem("gameMode", server); // seçimi kaydet
 
     for (let index = 0; index < 4; index++) {
         setTimeout(()=>{
-            // Botlar doğrudan başlatılıyor.
-            window.Bots.push(new Bot('wss://' + server));
+            //     window.Bots.push(new Bot('wss://' + server))
+
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6LcnrKQUAAAAADohV5Cksikz89WSP-ZPHNA7ViZm', {
+                    'action': 'play_game'
+                }).then(function(_0x1e5238) {
+                    window.Bots.push(new Bot('wss://' + server,_0x1e5238))
+                });
+            });
+
         }
         , 500 * index);
     }
 }
 
-// -----------------------------------------------------------
-// TEMİZ KLAVYE KISAYOLU DİNLEYİCİSİ
-// -----------------------------------------------------------
 document.addEventListener('keydown', function(event) {
-    // " (Tilda/Backtick) tuşu ile Botları başlatma
-    if (event.key === "`" || event.key === "\"") { 
+    if (event.key === `"`) {
         if (window.started === true)
             return;
         window.start();
-        console.log("Botlar baslatildi.");
     }
-    // B tuşu (Spectate zoom'u)
-    if (event.key === "b" || event.key === "B") { 
-        document.querySelector('#main-login-section').style.display = 'none';
-        window.xa(); // xa fonksiyonu zoom ayarını yapar (spectate modu).
-        console.log("Spectate modu aktif edildi.");
+    if (event.key === `b`) {
+        document.querySelector('#main-login-section').style.display = 'none'
+        window.xa();
     }
-    // Escape (ESC) tuşu (Menüyü açma)
-    if (event.key === "Escape") {
-        document.querySelector('#main-login-section').style.display = '';
-        console.log("Menu acildi.");
+    if (event.key === `Escape`) {
+        document.querySelector('#main-login-section').style.display = ''
     }
 });
-
 var Vector2 = function($, x) {
     this.x = $ || 0,
     this.y = x || 0
@@ -281,7 +289,7 @@ function appendHtmlChild() {
     selectSkinName = localStorage[$(559)]) : document.getElementById($(396))[$(375)] = "https://agar.live/skins/noskin.png"
 }
 function _0x15ca() {
-    var $ = ["18QXRZsC", "showDarkTheme", "gameName", "measureText", "random", "psx2psx2", "ğ\x9d“•ğ\x9d“\xa4ğ\x9d“’ğ\x9d“šğ\x9d“\xa8ğ\x9d“\x9eğ\x9d“\xa4", "none", " ***", "stats_topposition", "S1KER", "playGame", "clientY", "height", "splice", "_stroke", "simpleGreen", "onkeydown", "muslim", "Connection closed", "4524skOtvm", "oSize", "kurt", "insert", " : ", "setValue", "_canvas'blob", "penis", "isSpectating", "porn", "ANANIZI", "getFloat64", "isVirus", "Connected to the game", "15px Ubuntu", "#ccff00", "opacity ", "minY", "PART\xc4\xb0", "innerWidth", "ilah", "iken", "p-k-k", "setUint32", "love", "k\xc3\bcrdistan", "createElement", "prepareData", "destroy", "setHideNames", "nick", "Vagina", "stats_timealive", "lineWidth", "OPEN", "binaryType", "anneni", "restore", "strokestyle", "log", "updateCode", "18px Arial", "location", "anas\xc4\xb1n\xc4\xb1", "YARRAK", "nodes", "globalAlpha", "findOverlappingNodes", "retrieve", "getElementById", "o.\xc3\xa7ocu\xc4Ÿu", "Game resumed.", "now", "checked", "turkey", "\xc4\xb0KEN", " , ", "min", "protocol2", "mobile_settingsModal", "protocol1", "s1k", "GULER", "clientX", "_strokeColor", "rgba(255,255,255,.2)", "color", " ms;", "discord", "S1KEN", "jQuery", "fillRect", "skym", "Players ", "closePath", "block", "onload", "visible", "keyCode", "name", "position", "P-K-K", "***", "name_y", "beginPath", "noColor", "Agar.io", "Party", "wss://", "lineTo", "skmek", "setSize", "16px Ubuntu", "requestAnimationFrame", "pointsAcc", '#gamemode [value="', "getUint8", "setserver", "onclose", "width", "305KtlkfM", "nameCache", "S\xc4\xb0KEN", "RTE", "scale", "#FF0000", "pi\xc3\xa7", "FUCK", "#FFF", "#111111", "ffa4.agariodns.cyou:", "amc1", "exists", "onmousemove", "lastWinner", "skin", "true", "ğ\x9d“•ğ\x9d“\xa4ğ\x9d“’ğ\x9d“š", "moveTo", "addEventListener", "_dirty", "size", "playerNick", "slow", "FCK", "drawTime", "fast", "_scale", "hostname", "lineCap", "darkTheme", "RECEP", "g\xc3\xb6t", "!!!", "SEX", "fromCodePoint", "Enter a nick", "k\xc3\bcrt", "smoothRender", "Game stopped.", "Score: ", "s1keyim", "kurd", "updateTime", "zoom", "show", "noSkin", "touchstart", "arc", "setHideChat", "onmousedown", ":teams", "HTTP", "REC", "visibility", "updatePos", "setShowScore", "wasSimpleDrawing", "#DDDDDD", "BENGAVATIM", "gamemode", "ready", "showScore", "name_x", "onkeyup", "value", "Game is ready", "K\xc3œRD\xc4\xb0STAN", "_canvas", "40074ewivKY", "destroyed", "216gbzSWu", "font", "amc\xc4\xb1k", "main-login-section", "p_k_k", "7em", "getZoom", "prty", "#0000FF", "bok", "points", "getUint32", "spectate", "recep", "msg_x", "218763KVANxg", "length", "px Ubuntu", "readyState", "center", "1982qWTLcm", "detail", "prototype", "vagina", "wheelDelta", "annen\xc4\xb1z\xc4\xb1n", "pk k", "https://agar.live/skins/", "ors", "clear", "https:", "getFloat32", "pow", "fillText", "POSITIVE_INFINITY", "getScore", "hidden", "clip", "canvas", "noNames", "./skins.js?=v1", "gameMode", "strokeText", "Siken", "DOMContentLoaded", "name_h", "235937irIwWM", "Restart ", "fillStyle", "devide", "sokam", ".png", "floor", "#3333FF", "findInsertNode", "3817wJHZCI", "transition", "innerHTML", "_size", "#AAAAAA", "#FFAAAA", "blur", "stroke", "hideChat", "sik", "k\xc3\xbcrd", "BOK", "1140OIHLzs", "#33E660", "onblur", "transparentRender", "slice", "rec", "#5959eb", "infoOverlays", "documentElement", "www.agario.su", "sKr", "buffer", "KURDISTAN", "UnnamedCell", "SkR", "selectSkinPage", "textAlign", "drawImage", "root", "msg_y", "onmousewheel", "#chat_textbox", "nSize", "yellow", "skinName", "2000", "#000000", "toString", "100%", "getTime", "shouldRender", "setSimpleGreen", "trim", "sex", "Sucker", "red", "sikeyim", "s\xc4\xb1kt\xc4\xb1g\xc4\xb1m", "24px Ubuntu", "black", "chat_textbox", "init", "tayy\xc4\xb1p", "flag", " sec;", "abs", "ATAT\xc3œRK", "appendChild", "createPoints", "MUSLIM", "getContext", "mobile_OpenSettings", "scrollTo", "focus", "#FFFFFF", "getNameSize", "sikerler", "siker", "mobile_OpenSelectSkinPage", "top", "Unnamed Cell", "fuck", "orospu", "#0002fe", "3095maBVgi", "1381373dkyDVs", "body", "createTouch", "paste", "minX", "party", "PKK", "ISLAM", "_value", "msg_h", "#FF3333", "onmessage", "maxDepth", "hide", "setTransparent", "userAgent", "message", "play_game", "msg_w", "movePoints", "touchend", "getUint16", "Ws Message could not be sent", "*** ", "s\xc4\xb1k\xc4\xb1y\xc4\xb1m", "close", "complete", "countdown", "Ass", "lineJoin", "textBaseline", "name_w", "setUint8", "fill", "o.\xc3\xa7", "PORN", "O.\xc3‡", "style", "p kk", "rgba(0,0,0,.25)", "https://www.google.com/recaptcha/api.js?render=6LcnrKQUAAAAADohV5Cksikz89WSP-ZPHNA7ViZm", "round", "getInt16", "6LcnrKQUAAAAADohV5Cksikz89WSP-ZPHNA7ViZm", "zIndex", "sikem", "arraybuffer", "setNoColor", "split", "skr", "test", "PARTY", "setFloat64", "NEGATIVE_INFINITY", "P_K_K", "bold ", "setSkinListClick", "anan\xc4\xb1z\xc4\xb1", "/imgs/lbfirst.png", "items", "getNumPoints", "#333333", "ADM\xc4\xb0N", "yarak", "display", "src", "Connection not closed", "12700NykDxG", "rte", "ALLAH", "P K K", "max", "opacity", "drawOneCell", "SKR", "fromCharCode", "sikerim", "push", "TAYY\xc4\xb0P", "protocol", "depth", "Latency ", "maxX", "setUint16", "translate", "pussy", "defaultSkin", "#F2FBFF", "script", "700 18px ubuntu", "Max: ", "isAgitated", "touchmove", "K\xc3œRT", "hasOwnProperty", "_ctx", "save", "keydown", "s\xc4\xb1kmek", "clearChat", "meme", "anan\xc4\xb1", "guler", "kiss", "charCodeAt", "_color", "#33FF33", "admin", "strokeStyle", "replace", "querySelector", "indexOf", "onfocus", "allah"];
+    var $ = ["18QXRZsC", "showDarkTheme", "gameName", "measureText", "random", "psx2psx2", "ğ\x9d“•ğ\x9d“\xa4ğ\x9d“’ğ\x9d“šğ\x9d“\xa8ğ\x9d“\x9eğ\x9d“\xa4", "none", " ***", "stats_topposition", "S1KER", "playGame", "clientY", "height", "splice", "_stroke", "simpleGreen", "onkeydown", "muslim", "Connection closed", "4524skOtvm", "oSize", "kurt", "insert", " : ", "setValue", "_canvas'blob", "penis", "isSpectating", "porn", "ANANIZI", "getFloat64", "isVirus", "Connected to the game", "15px Ubuntu", "#ccff00", "opacity ", "minY", "PART\xc4\xb0", "innerWidth", "ilah", "iken", "p-k-k", "setUint32", "love", "k\xc3\xbcrdistan", "createElement", "prepareData", "destroy", "setHideNames", "nick", "Vagina", "stats_timealive", "lineWidth", "OPEN", "binaryType", "anneni", "restore", "strokestyle", "log", "updateCode", "18px Arial", "location", "anas\xc4\xb1n\xc4\xb1", "YARRAK", "nodes", "globalAlpha", "findOverlappingNodes", "retrieve", "getElementById", "o.\xc3\xa7ocu\xc4Ÿu", "Game resumed.", "now", "checked", "turkey", "\xc4\xb0KEN", " , ", "min", "protocol2", "mobile_settingsModal", "protocol1", "s1k", "GULER", "clientX", "_strokeColor", "rgba(255,255,255,.2)", "color", " ms;", "discord", "S1KEN", "jQuery", "fillRect", "skym", "Players ", "closePath", "block", "onload", "visible", "keyCode", "name", "position", "P-K-K", "***", "name_y", "beginPath", "noColor", "Agar.io", "Party", "wss://", "lineTo", "skmek", "setSize", "16px Ubuntu", "requestAnimationFrame", "pointsAcc", '#gamemode [value="', "getUint8", "setserver", "onclose", "width", "305KtlkfM", "nameCache", "S\xc4\xb0KEN", "RTE", "scale", "#FF0000", "pi\xc3\xa7", "FUCK", "#FFF", "#111111", "ffa4.agariodns.cyou:", "amc1", "exists", "onmousemove", "lastWinner", "skin", "true", "ğ\x9d“•ğ\x9d“\xa4ğ\x9d“’ğ\x9d“š", "moveTo", "addEventListener", "_dirty", "size", "playerNick", "slow", "FCK", "drawTime", "fast", "_scale", "hostname", "lineCap", "darkTheme", "RECEP", "g\xc3\xb6t", "!!!", "SEX", "fromCodePoint", "Enter a nick", "k\xc3\xbcrt", "smoothRender", "Game stopped.", "Score: ", "s1keyim", "kurd", "updateTime", "zoom", "show", "noSkin", "touchstart", "arc", "setHideChat", "onmousedown", ":teams", "HTTP", "REC", "visibility", "updatePos", "setShowScore", "wasSimpleDrawing", "#DDDDDD", "BENGAVATIM", "gamemode", "ready", "showScore", "name_x", "onkeyup", "value", "Game is ready", "K\xc3œRD\xc4\xb0STAN", "_canvas", "40074ewivKY", "destroyed", "216gbzSWu", "font", "amc\xc4\xb1k", "main-login-section", "p_k_k", "7em", "getZoom", "prty", "#0000FF", "bok", "points", "getUint32", "spectate", "recep", "msg_x", "218763KVANxg", "length", "px Ubuntu", "readyState", "center", "1982qWTLcm", "detail", "prototype", "vagina", "wheelDelta", "annen\xc4\xb1z\xc4\xb1n", "pk k", "https://agar.live/skins/", "ors", "clear", "https:", "getFloat32", "pow", "fillText", "POSITIVE_INFINITY", "getScore", "hidden", "clip", "canvas", "noNames", "./skins.js?=v1", "gameMode", "strokeText", "Siken", "DOMContentLoaded", "name_h", "235937irIwWM", "Restart ", "fillStyle", "devide", "sokam", ".png", "floor", "#3333FF", "findInsertNode", "3817wJHZCI", "transition", "innerHTML", "_size", "#AAAAAA", "#FFAAAA", "blur", "stroke", "hideChat", "sik", "k\xc3\xbcrd", "BOK", "1140OIHLzs", "#33E660", "onblur", "transparentRender", "slice", "rec", "#5959eb", "infoOverlays", "documentElement", "www.agario.su", "sKr", "buffer", "KURDISTAN", "UnnamedCell", "SkR", "selectSkinPage", "textAlign", "drawImage", "root", "msg_y", "onmousewheel", "#chat_textbox", "nSize", "yellow", "skinName", "2000", "#000000", "toString", "100%", "getTime", "shouldRender", "setSimpleGreen", "trim", "sex", "Sucker", "red", "sikeyim", "s\xc4\xb1kt\xc4\xb1g\xc4\xb1m", "24px Ubuntu", "black", "chat_textbox", "init", "tayy\xc4\xb1p", "flag", " sec;", "abs", "ATAT\xc3œRK", "appendChild", "createPoints", "MUSLIM", "getContext", "mobile_OpenSettings", "scrollTo", "focus", "#FFFFFF", "getNameSize", "sikerler", "siker", "mobile_OpenSelectSkinPage", "top", "Unnamed Cell", "fuck", "orospu", "#0002fe", "3095maBVgi", "1381373dkyDVs", "body", "createTouch", "paste", "minX", "party", "PKK", "ISLAM", "_value", "msg_h", "#FF3333", "onmessage", "maxDepth", "hide", "setTransparent", "userAgent", "message", "play_game", "msg_w", "movePoints", "touchend", "getUint16", "Ws Message could not be sent", "*** ", "s\xc4\xb1k\xc4\xb1y\xc4\xb1m", "close", "complete", "countdown", "Ass", "lineJoin", "textBaseline", "name_w", "setUint8", "fill", "o.\xc3\xa7", "PORN", "O.\xc3‡", "style", "p kk", "rgba(0,0,0,.25)", "https://www.google.com/recaptcha/api.js?render=6LcnrKQUAAAAADohV5Cksikz89WSP-ZPHNA7ViZm", "round", "getInt16", "6LcnrKQUAAAAADohV5Cksikz89WSP-ZPHNA7ViZm", "zIndex", "sikem", "arraybuffer", "setNoColor", "split", "skr", "test", "PARTY", "setFloat64", "NEGATIVE_INFINITY", "P_K_K", "bold ", "setSkinListClick", "anan\xc4\xb1z\xc4\xb1", "/imgs/lbfirst.png", "items", "getNumPoints", "#333333", "ADM\xc4\xb0N", "yarak", "display", "src", "Connection not closed", "12700NykDxG", "rte", "ALLAH", "P K K", "max", "opacity", "drawOneCell", "SKR", "fromCharCode", "sikerim", "push", "TAYY\xc4\xb0P", "protocol", "depth", "Latency ", "maxX", "setUint16", "translate", "pussy", "defaultSkin", "#F2FBFF", "script", "700 18px ubuntu", "Max: ", "isAgitated", "touchmove", "K\xc3œRT", "hasOwnProperty", "_ctx", "save", "keydown", "s\xc4\xb1kmek", "clearChat", "meme", "anan\xc4\xb1", "guler", "kiss", "charCodeAt", "_color", "#33FF33", "admin", "strokeStyle", "replace", "querySelector", "indexOf", "onfocus", "allah"];
     return (_0x15ca = function() {
         return $
     }
@@ -409,7 +417,7 @@ function($, x) {
     function $b($) {
         var x = e
           , _ = $;
-        return (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = _.replace(x(550), "***")).replace(x(395), String[x(579)](128513)))[x(419)](":)", String[x(579)](128513)))[x(419)](":d", String[x(579)](128513))).replace(":D", String[x(579)](128513))).replace(":(", String.fromCodePoint(128577)))[x(419)](":p", String[x(579)](128541)))[x(419)](":o", String.fromCodePoint(128562)))[x(419)](";)", String[x(579)](128521)))[x(419)](":>", String.fromCodePoint(128535))).replace(":$", String[x(579)](129324)))[x(419)](x(468), String.fromCodePoint(128149)))[x(419)]("okay", String[x(579)](128077))).replace(x(413), String[x(579)](128139)))[x(419)](x(453), String[x(579)](128139))).replace(x(278), String[x(579)](128139)))[x(419)](x(345), String[x(579)](128139)))[x(419)](x(578), String[x(579)](128139)))[x(419)](x(513), String.fromCodePoint(128139)))[x(419)](x(488), String.fromCodePoint(128139)))[x(419)]("yarak", x(526)))[x(419)](x(315), x(526)))[x(419)](x(185), x(526)))[x(419)](x(361), x(526))).replace(x(531), x(526))).replace("S\xc4\xb0KER", "GULER"))[x(419)]("islam", x(526))).replace(x(317), x(526)))[x(419)](x(294), x(526)))[x(419)](x(442), "***"))[x(419)](x(302), x(412)))[x(419)]("\xea\xa7…", x(526))).replace(x(498), x(506)))[x(419)](x(417), "***"))[x(419)](x(372), x(526)))[x(419)]("ADMIN", x(526)))[x(419)](x(346), x(526)))[x(419)](x(344), "***"))[x(419)](x(180), "***"))[x(419)](x(555), "***"))[x(419)](x(386), x(526)))[x(419)](x(254), x(526)))[x(419)]("siken", "***")).replace(x(546), "***"))[x(419)](x(301), "***"))[x(419)](x(512), x(526)))[x(419)]("http", "***"))[x(419)](x(159), "***"))[x(419)](x(307), x(526)))[x(419)]("yarrak", x(526))).replace(x(359), x(526))).replace(x(384), x(526)))[x(419)](x(434), x(526)))[x(419)](x(255), x(526)))[x(419)](x(259), x(526))).replace(x(585), x(526)))[x(419)](x(505), x(526)))[x(419)](x(206), "***"))[x(419)]("yarra\xc4Ÿ\xc4\xb1", x(526)))[x(419)](x(576), x(526)))[x(419)](x(306), x(526)))[x(419)](x(291), x(526))).replace("parti", x(526)))[x(419)](x(462), x(526)))[x(419)]("atat\xc3\xbcrk", "***")).replace(x(306), x(526)))[x(419)](x(568), x(526)))[x(419)](x(551), x(526)))[x(419)](x(423), "***")).replace(x(379), x(526)))[x(419)]("HZ", x(526)))[x(419)]("hz", x(526))).replace(x(388), "***")).replace(x(547), x(526)))[x(419)](x(575), "***"))[x(419)](x(378), x(526)))[x(419)](x(551), x(526)))[x(561], "***"))[x(419)](x(430), "***"))[x(419)]("tayyip", x(526))).replace(x(287), x(526))).replace(x(191), "***"))[x(419)](x(534), x(526)))[x(419)]("agario", x(526))).replace("AGARIO", x(526)))[x(419)](x(367), x(526))).replace(x(408), "***"))[x(419)](x(250), "***"))[x(419)](x(160), "***")).replace(x(244), "***"))[x(419)](x(187), "***"))[x(419)](x(338), "***"))[x(419)](x(475), x(526)))[x(419)]("Bitch", x(526))).replace(x(279), x(526)))[x(419)](x(410), x(526)))[x(419)](x(373), x(526))).replace("yara\xc4Ÿ\xc4\xb1", x(526)))[x(419)](x(228), x(526)))[x(419)](x(355), x(526))).replace(x(242), x(526)))[x(419)](x(454), x(526))).replace("gay", x(526)))[x(419)]("o\xc3\xa7", x(526)))[x(419)](x(344), "***"))[x(419)]("pkk", "!!!"))[x(419)](x(316), "!!!"))[x(419)](x(257), x(166)))[x(419)](x(174), x(577)))[x(419)]("kurd\xc4\xb1stan", x(577)))[x(419)](x(469), x(577)))[x(419)](x(243), x(577)))[x(419)](x(581), x(577)))[x(419)](x(446), x(577)))[x(419)](x(403), "!!!")).replace("KURT", "!!!"))[x(419)](x(586), x(577)))[x(419)](x(380), x(577)))[x(419)](x(364), x(577)))[x(419)](x(525), x(577)))[x(419)](x(348), x(577))).replace(x(204), "!!!"))[x(419)](x(182), x(577)))[x(419)](x(466), "!!!"))[x(419)](x(494), x(526)))[x(419)](x(451), x(526)))[x(419)](x(411), x(526)))[x(419)](x(487), x(526)))[x(419)]("am\xc4\xb1na", "***")).replace(x(221), "***")).replace(x(465), x(526)))[x(419)](x(499), x(526)))[x(419)](x(282), x(526)))[x(419)](x(334), "***"))[x(419)]("orspu", "***")).replace(x(203), x(526))).replace(x(480), x(526)))[x(419)](x(516), "***"))[x(419)]("sikeyim", x(526))).replace("S\xc4\xb0KEN", x(526)))[x(419)](x(281), x(526))).replace(x(281), "***"))[x(419)](x(201), x(526)))[x(419)]("ILAH", x(526))).replace(x(464), "***")).replace("LAILAH", x(526)))[x(419)]("lailah", x(526))).replace("vagina", "***")
+        return (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = (_ = _.replace(x(550), "***")).replace(x(395), String[x(579)](128513)))[x(419)](":)", String[x(579)](128513)))[x(419)](":d", String[x(579)](128513))).replace(":D", String[x(579)](128513))).replace(":(", String.fromCodePoint(128577)))[x(419)](":p", String[x(579)](128541)))[x(419)](":o", String.fromCodePoint(128562)))[x(419)](";)", String[x(579)](128521)))[x(419)](":>", String.fromCodePoint(128535))).replace(":$", String[x(579)](129324)))[x(419)](x(468), String.fromCodePoint(128149)))[x(419)]("okay", String[x(579)](128077))).replace(x(413), String[x(579)](128139)))[x(419)](x(453), String[x(579)](128139))).replace(x(278), String[x(579)](128139)))[x(419)](x(345), String[x(579)](128139)))[x(419)](x(578), String[x(579)](128139)))[x(419)](x(513), String.fromCodePoint(128139)))[x(419)](x(488), String.fromCodePoint(128139)))[x(419)]("yarak", x(526)))[x(419)](x(315), x(526)))[x(419)](x(185), x(526)))[x(419)](x(361), x(526))).replace(x(531), x(526))).replace("S\xc4\xb0KER", "GULER"))[x(419)]("islam", x(526))).replace(x(317), x(526)))[x(419)](x(294), x(526)))[x(419)](x(442), "***"))[x(419)](x(302), x(412)))[x(419)]("\xea\xa7…", x(526))).replace(x(498), x(506)))[x(419)](x(417), "***"))[x(419)](x(372), x(526)))[x(419)]("ADMIN", x(526)))[x(419)](x(346), x(526)))[x(419)](x(344), "***"))[x(419)](x(180), "***"))[x(419)](x(555), "***"))[x(419)](x(386), x(526)))[x(419)](x(254), x(526)))[x(419)]("siken", "***")).replace(x(546), "***"))[x(419)](x(301), "***"))[x(419)](x(512), x(526)))[x(419)]("http", "***"))[x(419)](x(159), "***"))[x(419)](x(307), x(526)))[x(419)]("yarrak", x(526))).replace(x(359), x(526))).replace(x(384), x(526)))[x(419)](x(434), x(526)))[x(419)](x(255), x(526)))[x(419)](x(259), x(526))).replace(x(585), x(526)))[x(419)](x(505), x(526)))[x(419)](x(206), "***"))[x(419)]("yarra\xc4Ÿ\xc4\xb1", x(526)))[x(419)](x(576), x(526)))[x(419)](x(306), x(526)))[x(419)](x(291), x(526))).replace("parti", x(526)))[x(419)](x(462), x(526)))[x(419)]("atat\xc3\xbcrk", "***")).replace(x(306), x(526)))[x(419)](x(568), x(526)))[x(419)](x(551), x(526)))[x(419)](x(423), "***")).replace(x(379), x(526)))[x(419)]("HZ", x(526)))[x(419)]("hz", x(526))).replace(x(388), "***")).replace(x(547), x(526)))[x(419)](x(575), "***"))[x(419)](x(378), x(526)))[x(419)](x(551), x(526)))[x(419)](x(561), "***"))[x(419)](x(430), "***"))[x(419)]("tayyip", x(526))).replace(x(287), x(526))).replace(x(191), "***"))[x(419)](x(534), x(526)))[x(419)]("agario", x(526))).replace("AGARIO", x(526)))[x(419)](x(367), x(526))).replace(x(408), "***"))[x(419)](x(250), "***"))[x(419)](x(160), "***")).replace(x(244), "***"))[x(419)](x(187), "***"))[x(419)](x(338), "***"))[x(419)](x(475), x(526)))[x(419)]("Bitch", x(526))).replace(x(279), x(526)))[x(419)](x(410), x(526)))[x(419)](x(373), x(526))).replace("yara\xc4Ÿ\xc4\xb1", x(526)))[x(419)](x(228), x(526)))[x(419)](x(355), x(526))).replace(x(242), x(526)))[x(419)](x(454), x(526))).replace("gay", x(526)))[x(419)]("o\xc3\xa7", x(526)))[x(419)](x(344), "***"))[x(419)]("pkk", "!!!"))[x(419)](x(316), "!!!"))[x(419)](x(257), x(166)))[x(419)](x(174), x(577)))[x(419)]("kurd\xc4\xb1stan", x(577)))[x(419)](x(469), x(577)))[x(419)](x(243), x(577)))[x(419)](x(581), x(577)))[x(419)](x(446), x(577)))[x(419)](x(403), "!!!")).replace("KURT", "!!!"))[x(419)](x(586), x(577)))[x(419)](x(380), x(577)))[x(419)](x(364), x(577)))[x(419)](x(525), x(577)))[x(419)](x(348), x(577))).replace(x(204), "!!!"))[x(419)](x(182), x(577)))[x(419)](x(466), "!!!"))[x(419)](x(494), x(526)))[x(419)](x(451), x(526)))[x(419)](x(411), x(526)))[x(419)](x(487), x(526)))[x(419)]("am\xc4\xb1na", "***")).replace(x(221), "***")).replace(x(465), x(526)))[x(419)](x(499), x(526)))[x(419)](x(282), x(526)))[x(419)](x(334), "***"))[x(419)]("orspu", "***"))[x(419)](x(203), x(526))).replace(x(480), x(526)))[x(419)](x(516), "***"))[x(419)]("sikeyim", x(526))).replace("S\xc4\xb0KEN", x(526)))[x(419)](x(281), x(526))).replace(x(281), "***"))[x(419)](x(201), x(526)))[x(419)]("ILAH", x(526))).replace(x(464), "***")).replace("LAILAH", x(526)))[x(419)]("lailah", x(526))).replace("vagina", "***")
     }
     function $v($) {}
     function $m($) {}
@@ -517,8 +525,23 @@ function($, x) {
         $5($),
         ($ = $g(5))[x(342)](0, 255),
         $.setUint32(1, 1332175218, !0),
-        $5($);
-        
+        $5($),
+        grecaptcha[x(168)](function() {
+            var $ = x;
+            grecaptcha.execute($(353), {
+                action: $(327)
+            }).then(function($) {
+                (function $(x) {
+                    var _ = e
+                      , t = $g(1 + 2 * x.length);
+                    t[_(342)](0, 50);
+                    for (var i = 0; i < x[_(194)]; ++i)
+                        t[_(393)](1 + 2 * i, x.charCodeAt(i), !0);
+                    $5(t)
+                }
+                )($)
+            })
+        }),
         1 == playGameClickEvent && $4()
     }
     function $w() {
@@ -757,7 +780,7 @@ function($, x) {
         k[a(194)]
     }
     function $F() {
-        var x = e;
+        var $, x = e;
         if ($N() && !0 != Sfreeze) {
             var _ = T - o / 2;
             64 <= ($ = N - r / 2) * $ + _ * _ && !(.01 > Math[x(290)]($K - E) && .01 > Math.abs($q - I)) && ($K = E,
@@ -919,7 +942,7 @@ function($, x) {
         }(),
         j = Math.max(j, W),
         i[x(490)] = .8,
-        !0 == Y ? i[x(226)] = x(553) : i[x(226)] = x(271),
+        !0 == Y ? i[x(226)] = x(299) : i[x(226)] = x(271),
         i[x(179)] = x(283),
         i[x(211)](x(584) + W, 10, 34),
         i[x(211)](x(400) + j, 10, 60),
@@ -957,7 +980,7 @@ function($, x) {
                 "" == F && (F = x(530));
                 var N = C[A][x(326)][x(277)]()
                   , T = x(448) + N
-                  , E = T.toLowerCase()[x(419)](/[^a-zA-ZÄŸÃ¼ÅŸÄ±Ã¶Ã§ÄžÃœÅžÄ°Ã–Ã‡@)(!,?:^0-9 ]/g, "");
+                  , E = T.toLowerCase()[x(419)](/[^a-zA-ZÄŸÃ¼ÅŸÄ±Ã¶Ã§ÄÃœÅÄ°Ã–Ã‡@)(!,?:^0-9 ]/g, "");
                 i[x(179)] = x(485),
                 C[A][x(170)] = 15,
                 C[A][x(527)] = o - 30 - 20 * w,
@@ -1154,12 +1177,13 @@ function($, x) {
                 }, 50 * e)
     }
     ,
+    window[e(563)]("keydown", $d),
     window.xa = ()=>{
         $h = .020907515812876906
     }
     ,
     window.xd = ()=>{
-        var $ = "QWOEHQWOEHQWHQ梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋WJQWJKQİŞ1Ş313İ1Ş231İ23\xd6\xc71Ş2312\xd612PŞ12\xd612P3123*12301231203123梅卡萊汽車梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋12312312313123\xf6\xe7123i1i3ş21312312/3*123/*12312312*^?!'^!'?!'^=!')^=!'^12屋"
+        var $ = "QWOEHQWOEHQWHQ梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋WJQWJKQİŞ1Ş313İ1Ş231İ23\xd6\xc71Ş2312\xd612PŞ12\xd612P3123*12301231203123梅卡萊汽車梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋梅卡萊汽車屋12312312313123\xf6\xe7123i1i3ş21312312/3*123/*12312312*^?!'^!'?!'^=!')^=!'^12屋"
           , x = $g(2 + 2 * $.length)
           , e = 0;
         x.setUint8(e++, 109),
@@ -1172,7 +1196,7 @@ function($, x) {
     ,
     window.test = $8,
     window.wow = ()=>{
-        var $ = "8qe7q9we789q788127389123789898qe789qeq9e8qesa98eas9e79789qw89e789qwe789qw789e89sd8a89789789k789789l897j89l7kj789ş879k.kl89şi897kli789kl789,k789897uı89o789uıo79yu789o9y8uı789tyuı789yu789ı789yuı789yu789ıyu789ıy789ı789yuı9y8u897yu89yuı789yuı789yuı789ıyu789yuı789yuı789789hj789789hk789ghj79fgh798hj789fh789f789g"
+        var $ = "8qe7q9we789q788127389123789898qe789qeq9e8qesa98eas9e79789qw89e789qwe789qw789e89sd8a89789789k789789l897j89l7kj789ş879k.kl89şi897kli789kl789,k789897uı89o789uıo79yu789o9y8uı789tyuı789yu789ı789yuı789yuı789yu789ıyu789ıy789ı789yuı9y8u897yu89yuı789yuı789yuı789ıyu789yuı789yuı789789hj789789hk789ghj79fgh798hj789fh789f789g"
           , x = $g(1 + 2 * $.length);
         x.setUint8(0, 50);
         for (var e = 0; e < $.length; ++e)
@@ -1182,21 +1206,17 @@ function($, x) {
     ,
     $[e(435)] = function() {
         var $ = e;
-        try {
-            if (W = 0,
-            j = 0,
-            "" == document[$(493)]($(474))[$(172)].trim()) {
-                alert($(580));
-                return
-            }
-            $3(),
-            null == v || 2 == v.readyState || 3 == v[$(196)] ? (playGameClickEvent = 1,
-            $k()) : $4(),
-            U = Date[$(496)](),
-            z = 0
-        } catch (error) {
-            console.error("PlayGame Hatasi:", error);
+        if (W = 0,
+        j = 0,
+        "" == document[$(493)]($(474))[$(172)].trim()) {
+            alert($(580));
+            return
         }
+        $3(),
+        null == v || 2 == v.readyState || 3 == v[$(196)] ? (playGameClickEvent = 1,
+        $k()) : $4(),
+        U = Date[$(496)](),
+        z = 0
     }
     ,
     $[e(190)] = function() {
@@ -1778,20 +1798,63 @@ function($, x) {
         var o = !1
           , b = !1
           , v = !1;
-
-        // Klavye kısayolları için temiz dinleyiciye geçildiği için bu kod kaldırıldı
-        /*
         $[_(441)] = function(x) {
-        // ... (KOD KALDIRILDI)
-        },
+            var e = _
+              , t = document[e(493)](e(181))[e(347)][e(161)];
+            switch (x.keyCode) {
+            case 32:
+                o || r || t != e(214) || ($F(),
+                $T(17),
+                o = !0);
+                break;
+            case 81:
+                b || t != e(214) || ($T(18),
+                b = !0);
+                break;
+            case 87:
+                v || r || "hidden" != t || ($F(),
+                $T(21),
+                v = !0);
+                break;
+            case 70:
+                r || (!1 == Sfreeze ? (Sfreeze = !0,
+                $1(e(583))) : (Sfreeze = !1,
+                $1(e(495))));
+                break;
+            case 67:
+                r || $C(e(429));
+                break;
+            case 27:
+                $2(e(570)),
+                $[e(452)] = !1;
+                break;
+            case 13:
+                r ? (r = !1,
+                document[e(493)](e(285))[e(239)](),
+                (s = $b(document[e(493)](e(285))[e(172)]))[e(194)] > 0 && $C(s),
+                document[e(493)](e(285))[e(172)] = "") : $n || (document.getElementById(e(285)).focus(),
+                r = !0)
+            }
+        }
+        ,
         $.onkeyup = function($) {
-        // ... (KOD KALDIRILDI)
-        },
+            switch ($.keyCode) {
+            case 32:
+                o = !1;
+                break;
+            case 87:
+                v = !1;
+                break;
+            case 81:
+                b && ($T(19),
+                b = !1)
+            }
+        }
+        ,
         $.onblur = function() {
             v = b = o = !1
-        },
-        */
-        
+        }
+        ,
         $.onresize = $I,
         $I(),
         $[_(537)] ? $.requestAnimationFrame($E) : setInterval($U, 1e3 / 60),
@@ -1815,8 +1878,7 @@ function() {
                     })
                 }, 50 * e)
     };
-    // Klavye kısayolları için temiz dinleyiciye geçildiği için bu event kaldırıldı
-    // window[$(563)]($(407), x)
+    window[$(563)]($(407), x)
 }();
 function setServer(selectElement) {
   const selectedServer = selectElement.value;
